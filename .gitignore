@@ -1,0 +1,17 @@
+*.bbl
+*.blg
+*.bcf
+*.lot
+*.log
+*.aux
+*.lof
+*.out
+*.lol
+*.gz
+*.toc
+*.xml
+*.aux
+*.bib
+
+# Whitelisted files
+!Bericht.bib

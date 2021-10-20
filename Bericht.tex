@@ -1,0 +1,219 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Inputs
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[
+ngerman          			% neue deutsche Rechtschreibung
+,a4paper          			% Papiergrösse
+%,twoside          			% Zweiseitiger Druck (rechts/links)
+%,10pt             			% Schriftgrösse
+%,11pt
+, 12pt
+,pdftex
+%,disable         			% Todo-Markierungen auschalten
+]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+%\usepackage{subfigure}
+\usepackage{framed}
+\usepackage{booktabs}
+\usepackage{setspace}
+\usepackage{threeparttable}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage[hyphens]{url}
+\usepackage[printonlyused,withpage]{acronym}
+\usepackage[
+	hyperref=true,			% Klickbare Referenzen in der PDF-Datei
+	backref=true,			% In der Literaturref. die Seiten angeben, wo ein \cite dazu steht
+	bibencoding=inputenc,	% s. inputenc-Paket
+	style=ieee,
+	backend=bibtex,
+	sorting=nty]{biblatex}
+%\addbibresource{Bericht.bib}
+\let\cite\parencite
+
+\usepackage{icomma}
+\usepackage{float}
+\usepackage{pdfpages}
+\usepackage{hyperref}
+\usepackage{csquotes}
+\usepackage{listings}
+\usepackage[left=2.5cm,right=2.5cm,top=2cm,bottom=3.5cm]{geometry}
+\onehalfspacing 			% Zeilenabstand
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Angaben zur Arbeit
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\Autor}{Max Musternann}
+\newcommand{\MatrikelNummer}{XXXXXXX}
+\newcommand{\Kursbezeichnung}{TINF1XBX}
+
+\newcommand{\FirmenName}{Musterfirma}
+\newcommand{\FirmenStadt}{Musterort}
+\newcommand{\FirmenLogoDeckblatt}{\includegraphics[width=2cm]{logo}}
+
+\newcommand{\BetreuerFirma}{Moritz Mustermann}
+\newcommand{\BetreuerDHBW}{Dodge}
+
+\newcommand{\Was}{Bachelor-/Studien-/Projektarbeit}
+
+\newcommand{\Titel}{Hier steht ein Mustertitel meiner Bachelor-/Studien-/Projektarbeit}
+\newcommand{\AbgabeDatum}{xx. November 109 B.C.}
+
+\newcommand{\Dauer}{von wann bis wann}
+\newcommand{\Abschluss}{Bachelor of Science}
+
+\newcommand{\Studiengang}{Informatik / Informationstechnik}
+
+\hypersetup{%%
+	pdfauthor={\Autor},
+	pdftitle={\Titel},
+	pdfsubject={\Was}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bibliography{Bericht}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Dokument
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+	
+	
+	\begin{titlepage}
+		\begin{center}
+			\vspace*{-2cm}
+			\FirmenLogoDeckblatt\hfill\includegraphics[width=4cm]{dhbw-logo}\\[2cm]
+			{\Huge \Titel}\\[1cm]
+			{\Huge\scshape \Was}\\[1cm]
+			{\large für die Prüfung zum}\\[0.5cm]
+			{\Large \Abschluss}\\[0.5cm]
+			{\large des Studienganges \Studiengang}\\[0.5cm]
+			{\large an der}\\[0.5cm]
+			{\large Dualen Hochschule Baden-Württemberg Karlsruhe}\\[0.5cm]
+			{\large von}\\[0.5cm]
+			{\large\bfseries \Autor}\\[1cm]
+			{\large Abgabedatum \AbgabeDatum}
+			\vfill
+		\end{center}
+		\begin{tabular}{l@{\hspace{2cm}}l}
+			Bearbeitungszeitraum			& \Dauer			\\
+			Matrikelnummer					& \MatrikelNummer	\\
+			Kurs							& \Kursbezeichnung	\\
+			Ausbildungsfirma				& \FirmenName		\\
+											& \FirmenStadt		\\
+			Betreuer der Ausbildungsfirma	& \BetreuerFirma	\\
+			Gutachter der Studienakademie	& \BetreuerDHBW		\\
+		\end{tabular}
+	\end{titlepage}
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%%%%%%%% Erklärung %%%%%%%%
+	
+	\input{Erklaerung.tex}
+	
+	%%%%%%%% Verzeichnisse %%%%%%%%
+	
+	\pagenumbering{Roman}
+	
+	\clearpage
+	\tableofcontents			% Inhaltsverzeichnis hier ausgeben
+	\clearpage
+	\listoffigures				% Liste der Abbildungen
+	\clearpage
+	\listoftables
+	%\clearpage					% Liste der Tabellen
+	%\listofequations			% Liste der Formeln
+	\clearpage
+	\include{Abk}				% Abkürzungsverzeichnis
+	
+	%%%%%%%% Abstract %%%%%%%%
+	\selectlanguage{ngerman}
+	\begin{abstract}
+		\input{Abstract/Abstrakt.tex}
+		\thispagestyle{empty}
+	\end{abstract}
+	\clearpage
+%	\selectlanguage{english}
+%	\begin{abstract}
+%		\input{Abstract/Abstract.tex}
+%		\thispagestyle{empty}
+%	\end{abstract}
+%	\clearpage
+%	\selectlanguage{ngerman}
+	
+	%%%%%%%% Styling %%%%%%%%
+	
+	\pagenumbering{arabic}
+	\setcounter{page}{1}
+	
+	\pagestyle{fancy}
+	\fancyhf{}
+	\setlength{\headheight}{35pt}
+	
+	\cfoot{\thepage}
+	
+	%%%%%%%% Kapitel %%%%%%%%
+	
+	\clearpage
+	\section{Einleitung}
+	\label{sec:Einleitung}
+	\input{Einleitung/Einleitung.tex}
+	
+	\clearpage
+	\section{Grundlagen}
+	\label{sec:Grundlagen}
+	%\input{Grundlagen/Grundlagen.tex}
+	
+	\clearpage
+	\section{Umsetzung}
+	\label{sec:Umsetzung}
+	%\input{Umsetzung/Umsetzung.tex}
+	
+	\clearpage
+	\section{Ausblick}
+	\label{sec:Ausblick}
+	%\input{Ausblick/Ausblick.tex}
+	
+	%%%%%%%% Anhang %%%%%%%%
+	
+	\clearpage
+	\pagenumbering{Roman}
+	\setcounter{page}{8}	% passende Zahl einsetzen
+	
+	\appendix
+	\section{test}
+	
+	%%%%%%%% Literaturverzeichnis %%%%%%%%
+	\clearpage
+	\addcontentsline{toc}{section}{Literaturverzeichnis}
+	
+	\def\refname{Literaturverzeichnis}
+	\printbibliography
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%% Frequently used commands %%%%%%%%%%%%%%%%%%%%
+
+
+%\noindent
+%\hangindent1cm
+%\textbf{Keyword} und der dazugehörige, eingerückte Text
+
+
+%\begin{figure}[tbt]
+%	\begin{center}
+%		\includegraphics[width=8cm]{images/}
+%	\end{center}
+%	\caption[Das steht im Verzeichnis]{Das steht unterm Bild (Abbildung aus \cite{Quelle})}
+%	\label{fig:figure}
+%\end{figure}
