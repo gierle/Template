@@ -24,9 +24,10 @@ ngerman          			% neue deutsche Rechtschreibung
 \usepackage{threeparttable}
 \usepackage{amssymb}
 \usepackage{graphicx}
+\usepackage[headings]{fullpage}
 \usepackage{fancyhdr}
 \usepackage[hyphens]{url}
-\usepackage[printonlyused,withpage]{acronym}
+\usepackage[toc, acronym]{glossaries}
 \usepackage[
 	hyperref=true,			% Klickbare Referenzen in der PDF-Datei
 	backref=true,			% In der Literaturref. die Seiten angeben, wo ein \cite dazu steht
@@ -77,6 +78,10 @@ ngerman          			% neue deutsche Rechtschreibung
 	pdftitle={\Titel},
 	pdfsubject={\Was}
 }
+
+
+\makeglossaries
+\include{glossary.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -135,7 +140,6 @@ ngerman          			% neue deutsche Rechtschreibung
 	%\clearpage					% Liste der Tabellen
 	%\listofequations			% Liste der Formeln
 	\clearpage
-	\include{Abk}				% Abkürzungsverzeichnis
 	
 	%%%%%%%% Abstract %%%%%%%%
 	\selectlanguage{ngerman}
@@ -157,9 +161,9 @@ ngerman          			% neue deutsche Rechtschreibung
 	\pagenumbering{arabic}
 	\setcounter{page}{1}
 	
-	\pagestyle{fancy}
-	\fancyhf{}
-	\setlength{\headheight}{35pt}
+	%\pagestyle{fancy}
+	%\fancyhf{}
+	%\setlength{\headheight}{35pt}
 	
 	\cfoot{\thepage}
 	
@@ -200,6 +204,8 @@ ngerman          			% neue deutsche Rechtschreibung
 	
 	\def\refname{Literaturverzeichnis}
 	\printbibliography
+	%%%%%%%% Abkürzungen und Glosar %%%%%%%%
+	\printglossary[title={Abkürzungsverzeichnis},type=\acronymtype]
 \end{document}
 
 %%%%%%%%%%%%%%%%%%%% Frequently used commands %%%%%%%%%%%%%%%%%%%%
